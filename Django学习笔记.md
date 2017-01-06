@@ -6,7 +6,8 @@
 > 使用了PyCharm一键式搭建Django所以基本配置就不多说了
 
 
-#第一个问题
+#问题1
+##静态文件
 
 ###将博客从falsk移植到Django的时候静态文件配置出了问题###
 
@@ -27,7 +28,7 @@ Django setting.py中设置如下：
 ----------
 #问题：2
 
-views 以及 url的配置
+##views 以及 url的配置
 
 目前我需要展示的网页有两个：
 
@@ -65,6 +66,25 @@ views 以及 url的配置
 > 2：模板位置
 
 > 3：字典形式的数据传递（模板中引用的方法与falsk一致）
+
+对应的urls配置如下：
+
+	from django.conf.urls import url
+	from django.contrib import admin
+	from MyBlog import views
+
+	urlpatterns = [
+    	url(r'^admin/', admin.site.urls),
+		url(r'^$',views.blog),
+    	url(r'^spider/(.*)/',views.spider),
+	]
+
+**别忘记最后的逗号~**
+
+那么运行之后我们键入对应的地址就可以看到响应的画面了：
+![](http://i.imgur.com/8oi1s7v.png)
+![](http://i.imgur.com/USq8L0P.png)
+
 	
 
 
