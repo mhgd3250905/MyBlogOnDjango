@@ -1,0 +1,62 @@
+{% extends "Base.html" %}
+{% block content %}
+<div class="row clearfix">
+	<div class="col-md-2 column">
+		<ul id="spiderNav" class="nav nav-stacked nav-pills">
+			<li>
+				<a href="{{ hose }} spider/HXBean">虎嗅网</a>
+			</li>
+			<li>
+				<a href="{{ hose }} spider/ITBean">IT之家</a>
+			</li>
+			<li>
+				<a href="{{ hose }} spider/GGBean">硅谷密探</a>
+			</li>
+			<li>
+				<a href="{{ hose }} spider/FHBean">凤凰科技</a>
+			</li>
+			<li>
+				<a href="{{ hose }} spider/WeixinBean">微信科技</a>
+			</li>
+			<li>
+				<a href="{{ hose }} spider/PWBean">品玩网</a>
+			</li>
+			<li>
+				<a href="{{ hose }} spider/PaopaoBean">泡泡网</a>
+			</li>
+		</ul>
+	</div>
+		<div class="col-md-10 column">
+			<!--这里是内容栏位 3:9 -->
+    		{% for post in posts %}
+			    <div class="row clearfix" style="margin: 10px">
+			    	<div class="col-md-3 column">
+						<a title={{ post.title }} href="{{ post.contentUrl }}">
+			    			<img id="blog-news-img" src={{ post.imgUrl }} style="width: 200px;height: 200px;" href={{ post.contentUrl }}>
+						</a>
+			    	</div>
+			    	<div lass="col-md-9 column">
+						<a href={{ post.contentUrl }}>
+							<h2>
+			    			{{ post.title }}
+			    			</h2>
+						</a>
+						<p>
+						</p>
+						<p>
+							<a class="btn" href="#">View details »</a>
+						</p>
+			    	</div>
+			    </div>
+    		{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+{% block JS %}
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$("#navSpider li").removeClass("active")
+			$("#navSpider li:nth-child(index-1)").addClass("active")
+		});
+	</script>
+{% endblock %}

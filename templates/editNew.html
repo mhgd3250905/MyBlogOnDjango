@@ -1,0 +1,49 @@
+{% extends "Base.html" %}
+{% block head %}
+<!--引入wangEditor.css-->
+    {% load staticfiles %}
+<link rel="stylesheet" type="text/css" href={% static 'css/wangEditor.min.css' %}>
+{% endblock %}
+{% block content %}
+<div class="row clearfix">
+<div class="col-md-12 column">
+	<!--这里是巨幕标题-->
+	<div class="jumbotron">
+		<!--下面是编辑部分-->
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<div><h1>标题</h1></div>
+				<div class="form-group form-group-lg">
+					<input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input">
+  				</div>
+	    	</div>
+	    	<div class="col-md-12 column">
+				<div id="div1" style="height:400px;max-height:500px;">
+					<p></p>
+				</div>
+
+				<!-- 提交按钮 -->
+				<button type="button" class="btn btn-success btn-lg" style="margin-top: 5px;width: 10%;">提交</button>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock %}
+{% block JS %}
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<!--<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
+    {% load staticfiles %}
+<script type="text/javascript" src={% static 'js/bootstrap.min.js' %}></script>
+<script type="text/javascript" src={% static 'js/wangEditor.min.js' %}></script>
+<!--这里引用jquery和wangEditor.js-->
+<script type="text/javascript">
+	// 获取元素
+	var div = document.getElementById('div1');
+	// 生成编辑器
+	var editor = new wangEditor(div);
+	editor.create();
+	 // 初始化编辑器的内容
+    editor.$txt.html('<p></p>');
+</script>
+{% endblock %}
