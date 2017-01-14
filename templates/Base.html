@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,7 +10,6 @@
 	<!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">-->
 	
 	<!-- 新 Bootstrap 核心 CSS 文件 -->
-    {% load staticfiles %}
 	<link rel="stylesheet" type="text/css" href={% static 'css/bootstrap.min.css' %}>
 	<link rel="stylesheet" type="text/css" href={% static 'css/bootstrap-theme.min.css' %}>
 	<link rel="stylesheet" type="text/css" href={% static 'css/styleBlog.css' %}>
@@ -29,17 +29,17 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="{{ host }}">盛大开的博客</a>
+						<a class="navbar-brand" href="http://127.0.0.1:8000/">盛大开的博客</a>
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 							<li class="active">
-								<a href="{{ host }}">博客</a>
+								<a href="http://127.0.0.1:8000/">博客</a>
 							</li>
 
 							<!--爬虫界面-->
 							<li>
-								<a href="{{ host }}spider/HXBean">爬虫</a>
+								<a href="http://127.0.0.1:8000/spider/HXBean">爬虫</a>
 							</li>
 
 							<li class="dropdown">
@@ -78,7 +78,7 @@
 						<!--这里是右边的菜单-->
 						<ul class="nav navbar-nav navbar-right">
 							<li>
-								<a href="{{ host }}edit">编辑</a>
+								<a href="http://127.0.0.1:8000/edit">编辑</a>
 							</li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">未知<strong class="caret"></strong></a>
@@ -121,39 +121,13 @@
 					</p>
 				</div>
 		</div>
-
-	<!--这里是内容栏位 3:9 -->
-    	{% for post in posts %}
-	    <div class="row clearfix" style="margin: 10px">
-
-	    	<div class="col-md-3 column">
-	    		<img id="blog-news-img" src={{ post.imgUrl }} style="width:200px;height:200px;">
-	    	</div>
-
-	    	<div lass="col-md-9 column">
-	    		<h2>
-	    			{{ post.title }}
-	    		</h2>
-	    		<p></p>
-	    		<p>
-	    			<a class="btn" href="#">View details »</a>
-	    		</p>
-	    	</div>
-
-	    </div>
-		{% endfor %}
-
 		{% endblock %}
-	
 </div>
 
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-
+<script src={% static 'js/jquery-3.1.1.min.js' %}></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<!--<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
-    {% load staticfiles %}
 <script type="text/javascript" src={% static 'js/bootstrap.min.js' %}></script>
 {% block JS %}
 {% endblock %}

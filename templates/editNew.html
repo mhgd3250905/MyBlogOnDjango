@@ -4,6 +4,7 @@
     {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href={% static 'css/wangEditor.min.css' %}>
 {% endblock %}
+
 {% block content %}
 <div class="row clearfix">
 <div class="col-md-12 column">
@@ -23,21 +24,22 @@
 				</div>
 
 				<!-- 提交按钮 -->
-				<button type="button" class="btn btn-success btn-lg" style="margin-top: 5px;width: 10%;">提交</button>
+				<button type="button" id="textSave" class="btn btn-success btn-lg" style="margin-top: 5px;width: 10%;">提交</button>
 			</div>
 		</div>
 	</div>
 </div>
 </div>
 {% endblock %}
+
 {% block JS %}
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <!--<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
     {% load staticfiles %}
-<script type="text/javascript" src={% static 'js/bootstrap.min.js' %}></script>
-<script type="text/javascript" src={% static 'js/wangEditor.min.js' %}></script>
-<!--这里引用jquery和wangEditor.js-->
-<script type="text/javascript">
+        <script type="text/javascript" src={% static 'js/bootstrap.min.js' %}></script>
+        <script type="text/javascript" src={% static 'js/wangEditor.min.js' %}></script>
+        <!--这里引用jquery和wangEditor.js-->
+        <script type="text/javascript">
 	// 获取元素
 	var div = document.getElementById('div1');
 	// 生成编辑器
@@ -45,5 +47,19 @@
 	editor.create();
 	 // 初始化编辑器的内容
     editor.$txt.html('<p></p>');
+
+    $("#textSave").click(function(){
+        //获取输入的标题以及内容
+        var textTitle=$("#formGroupInputLarge").val()
+        var textHtml=editor.$txt.html()
+        var textShort=editor.$txt.text()
+        //通过post方式回传
+        $.post("/upload/",
+        {
+            title:textTitle,
+            content:textHtml,
+            shortContent:textShort
+        });
+});
 </script>
 {% endblock %}

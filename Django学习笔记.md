@@ -85,6 +85,8 @@ Django setting.py中设置如下：
 ![](http://i.imgur.com/8oi1s7v.png)
 ![](http://i.imgur.com/USq8L0P.png)
 
+
+
 	
 
 

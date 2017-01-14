@@ -1,3 +1,16 @@
 from django.db import models
-
+import json
 # Create your models here.
+class SKBlog(models.Model):
+
+    title=models.CharField(max_length=100)
+    revisedTime=models.TextField()
+    content=models.TextField()
+    shortContent=models.TextField()
+
+    def __unicode__(self):
+        '''
+        输出数据内容
+        :return:
+        '''
+        return '标题：'+self.title
