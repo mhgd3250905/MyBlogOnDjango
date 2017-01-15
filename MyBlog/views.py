@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from MyBlog.BmobUtils import QueryUtils
 from MyBlog.models import SKBlog
+from django.core import serializers
 import json
 import time
 
@@ -25,15 +26,15 @@ def recieve_data(request):
         shortContent = request.POST['shortContent']
         revisedTime='%d' % time.time()
         SKBlog.objects.create(title=title,revisedTime=revisedTime,content=content,shortContent=shortContent)
-        print(SKBlog.objects.get(title=title).shortContent)
+        # print(SKBlog.objects.get(title=title).shortContent)
         return render(request,'Base.html')
     else:
         return render(request,'Base.html')
 
 def showBlog(request):
-    blog=SKBlog.objects.get(title="<h1>ksheng</h1>")
-    jsBlog=blog.toJSON()
-    print(jsBlog)
-    return render(request,'blogNew.html',{'title':'盛大开的博客','blog':json.dumps(jsBlog)})
+    blogs=SKBlog.objects.all()
+    data = serializers.serialize("json", blogs)
+    print(eval(data))
+    return render(request,'blogNew.html',{'title':'盛大开的博客','blogs':eval(data)})
 
 # def saveBolg(request):
