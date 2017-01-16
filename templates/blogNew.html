@@ -4,29 +4,46 @@
 {% endblock %}
 
 {% block content %}
-    {% for blog in blogs %}
+{#    {% for blog in blogs %}#}
 
-        <div class="row clearfix">
-		<div class="col-md-12 column">
-			<h2>
-				{{ blog.fields.title }}
-			</h2>
-			<p>
-                {{ blog.fields.shortContent }}
-			</p>
-			<p>
-				 <a class="btn" href="#">详情 »</a>
-			</p>
-		</div>
+        <div id="myFrame" class="row clearfix">
+{#		<div class="col-md-12 column">#}
+{#			<h2>#}
+{#				{{ blog.fields.title }}#}
+{#			</h2>#}
+{#			<p>#}
+{#                {{ blog.fields.shortContent }}#}
+{#			</p>#}
+{#			<p>#}
+{#				 <a class="btn" href="#">详情 »</a>#}
+{#			</p>#}
+{#		</div>#}
 	</div>
 
-    {% endfor %}
+{#    {% endfor %}#}
 {% endblock %}
 
 {% block JS %}
       {% load staticfiles %}
         <script type="text/javascript" src={% static 'js/bootstrap.min.js' %}></script>
     <script type="text/javascript">
+    $(function () {
+        var blogs={{ blogs|safe }};
+        for(var i=0;i<blogs.length;i++){
+                blog=blogs[i];
+                mDiv_2=document.createElement('div');
+                mDiv_2.setAttribute('class','col-md-12 column');
+                mP=document.createElement('p');
+                mH2=document.createElement('h2');
+                mTitle=document.createTextNode(blog.fields.title);
+                mContent=document.createTextNode(blog.fields.shortContent);
+                mH2.appendChild(mTitle);
+                mP.appendChild(mContent);
+                mDiv_2.appendChild(mH2);
+                mDiv_2.appendChild(mP);
+                $('#myFrame').append($(mDiv_2));
+        }
+    })
 
 </script>
 {% endblock %}

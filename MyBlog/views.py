@@ -32,9 +32,11 @@ def recieve_data(request):
         return render(request,'Base.html')
 
 def showBlog(request):
-    blogs=SKBlog.objects.all()
-    data = serializers.serialize("json", blogs)
-    print(eval(data))
-    return render(request,'blogNew.html',{'title':'盛大开的博客','blogs':eval(data)})
+    skblogs=SKBlog.objects.all()
+    data= serializers.serialize("json", skblogs)
+    blogs=eval(data)
+    print(type(blogs))
+    print(blogs)
+    return render(request,'blogNew.html',{'title':'盛大开的博客','blogs':blogs})
 
 # def saveBolg(request):
