@@ -3,7 +3,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>盛大开的博客</title>
+
+	<title>{% block title %}盛大开的博客{% endblock %}</title>
 	
 	<!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">-->
 	<!-- 可选的Bootstrap主题文件（一般不用引入） -->
@@ -29,12 +30,12 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="http://127.0.0.1:8000/">盛大开的博客</a>
+						<a class="navbar-brand" href="http://127.0.0.1:8000/blog">盛大开的博客</a>
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 							<li class="active">
-								<a href="http://127.0.0.1:8000/">博客</a>
+								<a href="http://127.0.0.1:8000/blog">博客</a>
 							</li>
 
 							<!--爬虫界面-->

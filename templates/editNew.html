@@ -1,10 +1,19 @@
 {% extends "Base.html" %}
+{% load staticfiles %}
+
+{#标题#}
+{% block title %}
+博客编辑
+{% endblock %}
+
+{#head#}
 {% block head %}
 <!--引入wangEditor.css-->
-    {% load staticfiles %}
+
 <link rel="stylesheet" type="text/css" href={% static 'css/wangEditor.min.css' %}>
 {% endblock %}
 
+{#内容#}
 {% block content %}
 <div class="row clearfix">
 <div class="col-md-12 column">
@@ -32,6 +41,7 @@
 </div>
 {% endblock %}
 
+{#JS#}
 {% block JS %}
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <!--<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>-->

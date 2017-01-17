@@ -1,0 +1,28 @@
+{% extends "Base.html" %}
+{% load staticfiles %}
+
+{#标题#}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{#内容#}
+{% block content %}
+	<div class="row clearfix">
+		<div class="col-md-12 column" id="blogContent">
+            <h1 class="text-center">
+				  {{ title }}
+			</h1>
+		</div>
+	</div>
+{% endblock %}
+
+{#JS#}
+{% block JS %}
+    <script>
+        $(function () {
+            var blog={{ blog|safe }};
+            $("#blogContent").append(blog.content);
+        })
+    </script>
+{% endblock %}

@@ -1,4 +1,11 @@
 {% extends "Base.html" %}
+{% load staticfiles %}
+{#标题#}
+{% block title %}
+    爬虫资讯
+{% endblock %}
+
+{#内容#}
 {% block content %}
 <div class="row clearfix">
 	<div class="col-md-2 column">
@@ -52,6 +59,8 @@
 		</div>
 	</div>
 {% endblock %}
+
+{#JS#}
 {% block JS %}
 	<script type="text/javascript">
 		$(document).ready(function () {

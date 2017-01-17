@@ -51,3 +51,61 @@
     {% endfor %}
 
 > OK 大功告成~
+
+#2017/1/17 21:37:07 
+----------
+##实例讲解：
+
+1.从数据库获取需要的数据：
+
+	blog=SKBlog.objects.get(revisedTime=blogId)
+
+2.分解需要的数据：
+	
+	title=blog.title
+    content=blog.content
+    revisedTime=blog.revisedTime
+
+> title和revisedTime使用在html中，而content使用在JS中
+
+3.json序列化JS中需要的数据
+
+	jsonBlog=json.dumps({'content':content})
+
+4.传递给模板
+
+	return render(request,'blogDetail.html',{'title':title,'revisedTime':revisedTime,'blog':jsonBlog})
+
+5.在模板中使用
+
+	{% extends "Base.html" %}
+	{% load staticfiles %}
+	
+	{#标题#}
+	{% block title %}
+	    {{ title }}
+	{% endblock %}
+	
+	{#内容#}
+	{% block content %}
+		<div class="row clearfix">
+			<div class="col-md-12 column" id="blogContent">
+	            <h3 class="text-center">
+					  {{ title }}
+				</h3>
+			</div>
+		</div>
+	{% endblock %}
+	
+	{#JS#}
+	{% block JS %}
+	    <script>
+	        $(function () {
+	            var blog={{ blog|safe }};
+	            $("#blogContent").append(blog.content);
+	        })
+	    </script>
+	{% endblock %}
+
+> 可以注意到这里JS中对于blog的使用：
+> 首先使用 var blog={{ blog|**safe** }}获取到blog，然后在进行下一步操作

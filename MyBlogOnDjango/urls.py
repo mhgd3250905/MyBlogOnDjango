@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^edit/$',views.edit),
     url(r'^upload/$',views.recieve_data),
     url(r'^blog/$',views.showBlog),
+    url(r'^blog/(?P<blogId>(\d)*)/$',views.blogDetails)
 ]

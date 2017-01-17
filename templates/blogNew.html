@@ -1,30 +1,38 @@
 {% extends "Base.html" %}
+{#加载静态文件#}
+{% load staticfiles %}
+
+{#修改标题#}
+{% block title %}
+    博客列表
+{% endblock %}
 {% block head %}
 
 {% endblock %}
 
 {% block content %}
-{#    {% for blog in blogs %}#}
+    <div class="row clearfix">
 
-        <div id="myFrame" class="row clearfix">
-{#		<div class="col-md-12 column">#}
-{#			<h2>#}
-{#				{{ blog.fields.title }}#}
-{#			</h2>#}
-{#			<p>#}
-{#                {{ blog.fields.shortContent }}#}
-{#			</p>#}
-{#			<p>#}
-{#				 <a class="btn" href="#">详情 »</a>#}
-{#			</p>#}
-{#		</div>#}
+				<!--这里是巨幕标题-->
+				<div class="jumbotron">
+					<h1>
+						盛大开的博客
+					</h1>
+					<p>
+						盛大开的个人博客
+					</p>
+					<p>
+						<a class="btn btn-primary btn-large" href="#">了解更多</a>
+					</p>
+				</div>
+		</div>
+    <div id="myFrame" class="row clearfix">
+
 	</div>
 
-{#    {% endfor %}#}
 {% endblock %}
 
 {% block JS %}
-      {% load staticfiles %}
         <script type="text/javascript" src={% static 'js/bootstrap.min.js' %}></script>
     <script type="text/javascript">
     $(function () {
@@ -34,14 +42,27 @@
                 mDiv_2=document.createElement('div');
                 mDiv_2.setAttribute('class','col-md-12 column');
                 mP=document.createElement('p');
+                mP2=document.createElement('p');
                 mH2=document.createElement('h2');
+                mDivDivider=document.createElement('div');
+
                 mTitle=document.createTextNode(blog.fields.title);
                 mContent=document.createTextNode(blog.fields.shortContent);
+                mRevisedTime=document.createTextNode(blog.fields.revisedTime);
+                mDivDivider.setAttribute("class","mDivider");
+
                 mH2.appendChild(mTitle);
                 mP.appendChild(mContent);
+                mP2.appendChild(mRevisedTime);
                 mDiv_2.appendChild(mH2);
                 mDiv_2.appendChild(mP);
+                mDiv_2.appendChild(mP2);
+                mDiv_2.appendChild(mDivDivider);
+
                 $('#myFrame').append($(mDiv_2));
+                $(mH2).click(function () {
+                    window.location.href="http://127.0.0.1:8000/blog/"+blog.fields.revisedTime;
+                })
         }
     })
 
