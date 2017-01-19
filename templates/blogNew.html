@@ -39,28 +39,19 @@
         var blogs={{ blogs|safe }};
         for(var i=0;i<blogs.length;i++){
                 blog=blogs[i];
-                mDiv_2=document.createElement('div');
-                mDiv_2.setAttribute('class','col-md-12 column');
-                mP=document.createElement('p');
-                mP2=document.createElement('p');
-                mH2=document.createElement('h2');
-                mDivDivider=document.createElement('div');
 
-                mTitle=document.createTextNode(blog.fields.title);
-                mContent=document.createTextNode(blog.fields.shortContent);
-                mRevisedTime=document.createTextNode(blog.fields.revisedTime);
-                mDivDivider.setAttribute("class","mDivider");
+                var mTitle=$("<h2></h2>").text(blog.fields.title);
+                var mContent=$("<p></p>").addClass("mContent").text(blog.fields.shortContent);
+                var mTime=$("<p></p>").text(blog.fields.revisedTime);
+                var mDiv=$("<div></div>");
+                var mDivider=$("<div></div>").addClass("mDivider");
+                mDiv.addClass("col-md-6 column");
+                mDiv.append(mTitle).append(mContent).append(mTime);
+                mDiv.append(mDivider);
 
-                mH2.appendChild(mTitle);
-                mP.appendChild(mContent);
-                mP2.appendChild(mRevisedTime);
-                mDiv_2.appendChild(mH2);
-                mDiv_2.appendChild(mP);
-                mDiv_2.appendChild(mP2);
-                mDiv_2.appendChild(mDivDivider);
+                $('#myFrame').append(mDiv);
 
-                $('#myFrame').append($(mDiv_2));
-                $(mH2).click(function () {
+                mTitle.click(function () {
                     window.location.href="http://127.0.0.1:8000/blog/"+blog.fields.revisedTime;
                 })
         }

@@ -4,10 +4,19 @@
 #submitBlog{
     padding-top: 5px;
 }
+
 .mDivider{
-    width: 100px;
-    height: 10px;
+    width: auto;
+    height: 1px;
     background: #3d3c38;
     margin-bottom:5px ;
+}
 
+.mContnet{
+    word-break: break-all;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
