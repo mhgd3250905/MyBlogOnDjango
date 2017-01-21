@@ -55,9 +55,10 @@ def recieve_data(request):
         #获取..
         shortContent = request.POST['shortContent']
         #生成提交时候的时间戳按毫秒记录：后面作为ID来查询各种
-        revisedTime='%d' % time.time()
+        revisedId='%d' % time.time()
+        revisedTime=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         #在数据库中创建对应的模板数据
-        SKBlog.objects.create(title=title,revisedTime=revisedTime,content=content,shortContent=shortContent)
+        SKBlog.objects.create(title=title,revisedId=revisedId,revisedTime=revisedTime,content=content,shortContent=shortContent)
         return render(request,'Base.html')
     else:
         return render(request,'Base.html')
@@ -88,7 +89,7 @@ def blogDetails(request,blogId):
     :return: 博客详情
     '''
     # 获取指定博客
-    blog=SKBlog.objects.get(revisedTime=blogId)
+    blog=SKBlog.objects.get(revisedId=blogId)
     # 获取博客title
     title=blog.title
     # 获取博客content

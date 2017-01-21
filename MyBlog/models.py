@@ -4,7 +4,8 @@ from django.db import models
 class SKBlog(models.Model):
 
     title=models.CharField(max_length=100)
-    revisedTime=models.TextField()
+    revisedTime=models.TextField(null=True,blank=True)
+    revisedId=models.TextField(null=True,blank=True)
     content=models.TextField()
     shortContent=models.TextField()
 

@@ -26,36 +26,25 @@
 					</p>
 				</div>
 		</div>
-    <div id="myFrame" class="row clearfix">
-
+    <div class="row clearfix">
+        <div id="myFrame" class="col-md-6 column">
+        </div>
+        <div class="col-md-6 column">]
+            <!--在这个区域加入博客页面右侧的推荐栏目-->
+            {% block rightBlogContent %}
+            {% endblock %}
+        </div>
 	</div>
 
 {% endblock %}
 
 {% block JS %}
-        <script type="text/javascript" src={% static 'js/bootstrap.min.js' %}></script>
+    <script type="text/javascript" src={% static 'js/bootstrap.min.js' %}></script>
+    <script type="text/javascript" src={% static 'js/JsBlog.js' %}></script>
     <script type="text/javascript">
     $(function () {
         var blogs={{ blogs|safe }};
-        for(var i=0;i<blogs.length;i++){
-                blog=blogs[i];
-
-                var mTitle=$("<h2></h2>").text(blog.fields.title);
-                var mContent=$("<p></p>").addClass("mContent").text(blog.fields.shortContent);
-                var mTime=$("<p></p>").text(blog.fields.revisedTime);
-                var mDiv=$("<div></div>");
-                var mDivider=$("<div></div>").addClass("mDivider");
-                mDiv.addClass("col-md-6 column");
-                mDiv.append(mTitle).append(mContent).append(mTime);
-                mDiv.append(mDivider);
-
-                $('#myFrame').append(mDiv);
-
-                mTitle.click(function () {
-                    window.location.href="http://127.0.0.1:8000/blog/"+blog.fields.revisedTime;
-                })
-        }
+        insertBlogs(blogs) ;
     })
-
 </script>
 {% endblock %}
