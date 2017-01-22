@@ -16,7 +16,10 @@
 {#内容#}
 {% block content %}
 <div class="row clearfix">
-<div class="col-md-12 column">
+<!--
+    blog编辑界面，编辑完成提交后隐藏
+-->
+<div id="blogDownHide" class="col-md-12 column">
 	<!--这里是巨幕标题-->
 	<div class="jumbotron">
 		<!--下面是编辑部分-->
@@ -38,6 +41,17 @@
 		</div>
 	</div>
 </div>
+
+<!--
+文章提交之后显示，一开始隐藏
+-->
+<div id="blogDownShow" class="col-md-12 column">
+
+    <a><span class="glyphicon glyphicon-thumbs-up"></span>文章发布成功！</a>
+    <div class="mDivider"></div>
+    <h1>标题</h1>
+
+</div>
 </div>
 {% endblock %}
 
@@ -50,26 +64,34 @@
         <script type="text/javascript" src={% static 'js/wangEditor.min.js' %}></script>
         <!--这里引用jquery和wangEditor.js-->
         <script type="text/javascript">
-	// 获取元素
-	var div = document.getElementById('div1');
-	// 生成编辑器
-	var editor = new wangEditor(div);
-	editor.create();
-	 // 初始化编辑器的内容
-    editor.$txt.html('<p></p>');
+        $(function () {
 
-    $("#textSave").click(function(){
-        //获取输入的标题以及内容
-        var textTitle=$("#formGroupInputLarge").val()
-        var textHtml=editor.$txt.html()
-        var textShort=editor.$txt.text()
-        //通过post方式回传
-        $.post("/upload/",
-        {
-            title:textTitle,
-            content:textHtml,
-            shortContent:textShort
+            // 获取元素
+        	var div = document.getElementById('div1');
+        	// 生成编辑器
+        	var editor = new wangEditor(div);
+        	editor.create();
+        	 // 初始化编辑器的内容
+        {#    editor.$txt.html('<p></p>');#}
+
+            $("#textSave").click(function(){
+                //获取输入的标题以及内容
+                var textTitle=$("#formGroupInputLarge").val()
+                var textHtml=editor.$txt.html()
+                var textShort=editor.$txt.text()
+                //通过post方式回传
+                $.post("/upload/",
+                {
+                    title:textTitle,
+                    content:textHtml,
+                    shortContent:textShort
+                },function () {
+                            $("#blogDownShow h1:first").html(textTitle);
+                            $("#blogDownHide").hide();
+                            $("#blogDownShow").show();
+                        });
+            });
         });
-});
+
 </script>
 {% endblock %}
