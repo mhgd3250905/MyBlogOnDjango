@@ -19,7 +19,7 @@ from MyBlog import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',views.blog),
+    url(r'^$',views.showBlog),
     url(r'^spider/(?P<tableName>.*)/',views.spider),
     url(r'^edit/$',views.edit),
     url(r'^upload/$',views.recieve_data),

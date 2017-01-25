@@ -2,6 +2,34 @@
  * Created by admin on 2016/12/24.
  */
 
+//页面加载完毕之后运行之JS
+$(function () {
+    //获取当前页面的url
+    //alert(window.location.href)
+    selectNav(window.location.href);
+
+
+});
+
+//通过判断当前页面的url来对导航中对应的栏位进行active处理
+function selectNav(currentUrl){
+    //alert(currentUrl);
+    $("#blogNavSelect>li").each(function () {
+        if(this.className!="dropdown"){
+            //分别获取每一个导航栏目的href属性
+            //alert($(this).find("a").first().attr("href"))
+            if(currentUrl==$(this).find("a").first().attr("href")){
+                $(this).attr("class","active");
+            }else{
+                $(this).attr("class","");
+            }
+            //alert($(this).find("a").first().attr("href"))
+
+        }
+    });
+
+}
+
 //把接收到了blogs插入到博客页面中
 function insertBlogs(blogs) {
     for(var i=0;i<blogs.length;i++){

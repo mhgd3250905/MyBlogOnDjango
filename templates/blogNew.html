@@ -39,8 +39,6 @@
 {% endblock %}
 
 {% block JS %}
-    <script type="text/javascript" src={% static 'js/bootstrap.min.js' %}></script>
-    <script type="text/javascript" src={% static 'js/JsBlog.js' %}></script>
     <script type="text/javascript">
     $(function () {
         var blogs={{ blogs|safe }};

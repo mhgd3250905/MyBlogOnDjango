@@ -33,14 +33,20 @@
 						<a class="navbar-brand" href="http://127.0.0.1:8000/blog">盛大开的博客</a>
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav">
-							<li class="active">
-								<a href="http://127.0.0.1:8000/blog">博客</a>
+                        <!-- 这一个区块的导航按钮都是在选择的时候会有active class的 -->
+						<ul id="blogNavSelect" class="nav navbar-nav">
+							<li>
+								<a href="http://127.0.0.1:8000/blog/">博客</a>
 							</li>
 
 							<!--爬虫界面-->
 							<li>
-								<a href="http://127.0.0.1:8000/spider/HXBean">爬虫</a>
+								<a href="http://127.0.0.1:8000/spider/HXBean/">爬虫</a>
+							</li>
+
+                            <!--编辑页面-->
+                            <li>
+								<a href="http://127.0.0.1:8000/edit/">编辑</a>
 							</li>
 
 							<li class="dropdown">
@@ -127,9 +133,10 @@
 
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src={% static 'js/jquery-3.1.1.min.js' %}></script>
+    <script src={% static 'js/jquery-3.1.1.min.js' %}></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script type="text/javascript" src={% static 'js/bootstrap.min.js' %}></script>
+    <script type="text/javascript" src={% static 'js/bootstrap.min.js' %}></script>
+    <script type="text/javascript" src={% static 'js/JsBlog.js' %}></script>
 {% block JS %}
 {% endblock %}
 

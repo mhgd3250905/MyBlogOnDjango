@@ -1,15 +1,15 @@
 /*博客页面的各种样式*/
 
 /*自定义字体*/
-@font-face {
-    /* font-properties */
-    font-family: FZLTH;
-    src:url('fonts/FZLTH.ttf');
-}
+/*@font-face {*/
+    /*!* font-properties *!*/
+    /*font-family: FZLTH;*/
+    /*src:url('fonts/FZLTH.ttf');*/
+/*}*/
 
-div {
-    font-family: FZLTH;
-}
+/*div {*/
+    /*font-family: FZLTH;*/
+/*}*/
 
 
 /*按钮的样式*/
